@@ -50,6 +50,7 @@ session_start();
             break;
         case 2:
             if(isset($usuario)){
+                $_SESSION["mod"] = $usuario;
                 $mod = $_SESSION["mod"];
                 $nombre = substr($_SESSION["usuarios"][$mod], 0, 12);
                 ?>
