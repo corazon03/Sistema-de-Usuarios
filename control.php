@@ -24,7 +24,7 @@ if($usu != null && $tipo != null ){
         fwrite($arch,$c1);
         fclose($arch);
     }
-    header("Location: index.php");
+    header("Location: usuarios.php");
 }else{
     echo 'Algo salio mal, intentalo de nuevo';
 }
