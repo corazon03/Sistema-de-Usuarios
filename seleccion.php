@@ -74,12 +74,22 @@ session_start();
             break;
         case 3:
             if(isset($usuario)){
-                $_SESSION['mod'] = $usuario;
+                $_SESSION["mod"] = $usuario;
+                $mod = $_SESSION["mod"];
+                $nombre = substr($_SESSION["usuarios"][$mod], 0, 12);
+            ?>
+                <h1>Eliminar Usuarios</h1>
+                Realmente desea eliminar al usuario:<span id="usuario"> <?php echo $nombre; ?> </span><br><br>
+                <form action="borrarU.php" methotd="post">
+                    <input type="submit" name="action" value="Borrar">
+                    <input type="submit" name="action" value="Cancelar">
+                </form>
+            <?php
             }
-            else {
+            else{
                 header("location: usuarios.php");
             }
-            break;
+           break;
         case 4:
             $_SESSION['mod'] = $usuario;
             header('Location: index.php');
