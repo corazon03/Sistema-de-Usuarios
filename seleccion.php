@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,8 +48,24 @@
                 </form>
             <?php
             break;
+        case 2:
+            if(isset($usuario)){
+                $_SESSION['mod'] = $usuario;
+                header("location: formulario.php");
+            }
+            else{
+                header("location: usuarios.php");
+            }
+            break;
+        case 3:
+            if(isset($usuario)){
+                $_SESSION['mod'] = $usuario;
+            }
+            else {
+                header("location: usuarios.php");
+            }
+            break;
         case 4:
-            session_start();
             $_SESSION['mod'] = $usuario;
             header('Location: index.php');
             break;

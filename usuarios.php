@@ -1,6 +1,9 @@
 <?php
+    session_start();
     $us = file("usuarios.dat");
     $separados = str_split($us[0], 16);
+
+    $_SESSION["usuarios"] = $separados;
 ?>
 <!DOCTYPE html>
 <html lang="en">

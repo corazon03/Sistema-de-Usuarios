@@ -1,6 +1,13 @@
 <?php
     session_start();
-    $_SESSION['mod'] = filter_input(0,"usuarios");
+    if(!isset($_SESSION['mod'])){
+        header("location: index.php");
+    }
+    else {
+        $mod = $_SESSION["mod"];
+        $nombre = substr($_SESSION["usuarios"][$mod], 0, 12);
+    }
+    // $_SESSION['mod'] = filter_input(0,"usuarios");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +20,7 @@
 <body align="center"><br>
     <h1>Modificar usuarios</h1>
     <form action="control.php" method="post">
-        Usuario: <input type="text" name="usuario"><br>
+        Usuario: <input type="text" name="usuario" value="<?php echo $nombre ?>"><br>
         Tipo: <select name="tipo" id="1">
             <option value="1">Usuario</option>
             <option value="2">Administrador</option>
