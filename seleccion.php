@@ -80,7 +80,7 @@ session_start();
             ?>
                 <h1>Eliminar Usuarios</h1>
                 Realmente desea eliminar al usuario:<span id="usuario"> <?php echo $nombre; ?> </span><br><br>
-                <form action="borrarU.php" methotd="post">
+                <form action="borrarU.php" method="post">
                     <input type="submit" name="action" value="Borrar">
                     <input type="submit" name="action" value="Cancelar">
                 </form>
