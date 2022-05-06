@@ -63,7 +63,7 @@ session_start();
                     </select><br><br>
                     Contraseña: <input type="password" name="contra1" ><br><br>
                     Contraseña: <input type="password" name="contra2" ><br><br>
-                    <input type="submit" name="action" value="Agregar">
+                    <input type="submit" name="action" value="Modificar">
                     <input type="submit" name="action" value="Cancelar">
                 </form>
                 <?php
