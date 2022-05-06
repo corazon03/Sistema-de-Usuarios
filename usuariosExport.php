@@ -7,7 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <span> Necesitas el archivo? <a href="respalda.csv" download>click aqui</a></span>
     <?php
     $arch= fopen("usuarios.dat","r");
     $arch2 = fopen("respalda.csv","w");
@@ -18,16 +17,14 @@
     }
     fclose($arch);
     fclose($arch2);
-    if(!empty($arch2)){
-        $fileName = basename("$arch2");
-        $filePath =  "files/".$fileName;
-        if(!empty($fileName) && file_exists($filePath)){
-            header("Cache-Control: public");
-            header("Content-Description: File Transfer");
-            header("Content-Disposition: attachment; filename=$fileName");
-            header("Content-Type: application/zip");
-            header("Content-Transfer-Encoding: binary");
-        }
+    $fileName = basename("respalda.csv");
+    $filePath =  $fileName;
+    if(!empty($fileName) && file_exists($filePath)){
+        header("Cache-Control: public");
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$fileName");
+        header("Content-Type: application/zip");
+        header("Content-Transfer-Encoding: binary");
     }
     // header("Location: algun documento");
     ?>
