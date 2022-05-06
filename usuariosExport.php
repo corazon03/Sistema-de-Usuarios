@@ -1,32 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php
-    $arch= fopen("usuarios.dat","r");
-    $arch2 = fopen("respalda.csv","w");
-    while(!feof($arch)){
-        $dat = fread($arch,16);
-        $res=trim(substr($dat,0,12)).",".substr($dat,12,1).",".trim(substr($dat,13,3));
-        if(strlen($res)>4){fwrite($arch2,$res."\r");}
+<?php
+    $fileName = 'resp'.date("Ymd").'.csv';
+    $archivo = fopen('usuarios.dat  ', 'r');
+    $archivo2 = fopen($fileName, 'w');
+    while(!feof($archivo)){
+        $dato = fread($archivo, 16);
+        $res = trim(substr($dato,0,12)).','.substr($dato,12,1).','.trim(substr($dato,13,3));
+        if(strlen($res)>4){
+        fwrite($archivo2, $res."\r");
+        }
     }
-    fclose($arch);
-    fclose($arch2);
-    $fileName = basename("respalda.csv");
-    $filePath =  $fileName;
-    if(!empty($fileName) && file_exists($filePath)){
+    fclose($archivo);
+    fclose($archivo2);  
+    
+    $filePath = $fileName;
+    if(file_exists($filePath)){
+        // Define headers
         header("Cache-Control: public");
         header("Content-Description: File Transfer");
         header("Content-Disposition: attachment; filename=$fileName");
         header("Content-Type: application/zip");
         header("Content-Transfer-Encoding: binary");
+        
+        // Read the file
+        readfile($filePath);
+        unlink($fileName);
+        exit;
+    }else{
+        echo 'The file does not exist.';
     }
-    // header("Location: algun documento");
     ?>
-</body>
-</html>
