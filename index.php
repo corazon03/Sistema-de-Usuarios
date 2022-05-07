@@ -17,7 +17,7 @@
             <li><a href="#">Procesos</a>
                 <ul>
                     <li><a href="usuariosExport.php" target="_blank">Exportar</a></li>
-                    <li><a href="#">Importar</a></li>
+                    <li><a href="importar.php">Importar</a></li>
                 </ul>
             </li>
             <li><a href="#">Reportes</a>
