@@ -1,6 +1,7 @@
 <?php 
 $nombreArchivo = 'C:\xampp\carpeta-segura\archivo.csv';
 if(file_exists($nombreArchivo)){
+    ini_set("auto_detect_line_endings", true);
     $arch = file($nombreArchivo);
 
     print_r($arch);
@@ -8,7 +9,6 @@ if(file_exists($nombreArchivo)){
     // echo "$arch[1] <br>";
     // echo "$arch[2] <br>";
 
-    // AQUI HAY ERRORES QUE NO SE PORQUE PASA, PERO NO LOS SEPARA POR SALTOS DE LINEA .-.
 
     foreach ($arch as $key => $value) {
         if($value != ""){
