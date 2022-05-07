@@ -4,7 +4,7 @@ if(file_exists($nombreArchivo)){
     ini_set("auto_detect_line_endings", true);
     $arch = file($nombreArchivo);
 
-    print_r($arch);
+    // print_r($arch);
     // echo "$arch[0] <br>";
     // echo "$arch[1] <br>";
     // echo "$arch[2] <br>";
