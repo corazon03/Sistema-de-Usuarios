@@ -3,22 +3,22 @@ $nombreArchivo = 'C:\xampp\carpeta-segura\archivo.csv';
 if(file_exists($nombreArchivo)){
     ini_set("auto_detect_line_endings", true);
     $arch = file($nombreArchivo);
-
-    // print_r($arch);
-    // echo "$arch[0] <br>";
-    // echo "$arch[1] <br>";
-    // echo "$arch[2] <br>";
-
-
+    $todo = "";
     foreach ($arch as $key => $value) {
         if($value != ""){
             $separado = explode(",", $value);
-            // print_r($separado);
-            echo "$separado[0] | $separado[1] | $separado[2] <br>";
+            $usuario = $separado[0].str_repeat(" ", 12- strlen($separado[0])).$separado[1].trim($separado[2]);
 
-            // AQUI DEBERIA DE HACER LO DEMAS PARA GUARDARLO EN EL ARCHIVO, PERO NO SE LEYERON COMO YO ESPERABA.
+            $todo .= $usuario;
         }
     }
+    $base = fopen("usuarios.dat", "w");
+    fwrite($base, $todo);
+    fclose($base);
+    ?>
+    <h1>Fueron importados los datos!!</h1>
+    <a href="index.php">Click aqui para volver...</a>
+    <?php
 }
 else{
     header("location: index.php");
